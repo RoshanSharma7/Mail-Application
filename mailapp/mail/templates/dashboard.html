@@ -1,0 +1,13 @@
+<h2>Dashboard</h2>
+<a href="{% url 'send_mail' %}">Send Mail</a> |
+<a href="{% url 'smtp_settings' %}">SMTP Settings</a> |
+<a href="{% url 'logout' %}">Logout</a>
+<hr>
+<h3>Sent Mails</h3>
+<ul>
+  {% for email in emails %}
+    <li><strong>{{ email.to_email }}</strong>: {{ email.subject }} ({{ email.sent_at }})</li>
+  {% empty %}
+    <li>No emails sent yet.</li>
+  {% endfor %}
+</ul>
