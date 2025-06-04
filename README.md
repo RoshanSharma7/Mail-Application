@@ -37,7 +37,8 @@ cd mailapp
 2. **Create virtual environment**
 ```
 python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate    # linux/Mac
+venv/Script/Activate        # Windows
 ```
 
 3. **Install dependencies**
@@ -64,42 +65,8 @@ To use Gmail:
 - Generate an App Password from: https://myaccount.google.com/apppasswords
 - Use the generated password in your SMTP settings form
 
----
+### How to get SMTP Password
 
-## Usage
-- Register a new account
-- Login and go to "SMTP Settings" to configure your email server
-- Go to "Send Email", fill in the form, and hit Send
-- View sent emails in your dashboard
-
----
-
-## Environment Variables
-If you prefer not to hard-code Gmail credentials:
-Create a ```.env``` file and use ```python-decouple``` or ```django-environ``` to load:
-```
-EMAIL_HOST_USER=your_email@gmail.com
-EMAIL_HOST_PASSWORD=your_app_password
-```
-
----
-
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-## Author
-### Roshan Kumar Sharma | Software Developer. 
-You can reach out via: -
-- Email: roshan.amlai96@gmail.com 
-- LinkedIn: https://www.linkedin.com/in/RoshanSharma7/
-- Twitter: https://www.twitter.com/imroshansharma7
-- Portfolio: https://roshansharma7.github.io/Roshan.github.io/
-
----
-
-## Notes:- How to get SMTP Password
 ### Step 1: Enable 2-Step Verification
 - Go to https://myaccount.google.com/security
 - Scroll to “Signing in to Google”
@@ -120,6 +87,52 @@ abcd efgh ijkl mnop
 ```
 
 ### Step 4: Use it in Django SMTP Settings
-- Mention in Environment Variables.
-  
-If you found this helpful, please follow me on all platforms.
+**4.1 Mention in Environment Variables.**  
+If you prefer not to hard-code Gmail credentials:
+Create a ```.env``` file and use ```python-decouple``` or ```django-environ``` to load:
+```
+EMAIL_HOST_USER=your_email@gmail.com
+EMAIL_HOST_PASSWORD=your_app_password
+```
+**4.2 Using UI For Setup SMTP Password.**  
+- Run django server
+```
+python manage.py runserver
+```
+- Register your self in application
+- Login in application
+- Goto SMTP Setting
+- Fill all the input fild like:
+```
+Smtp server: smtp.gmail.com          # Mandatory
+Smtp port: 587                       # Mandatory
+Email Host User: your_email
+Email Host Password: generated 16 Char password
+save
+```
+---
+
+## Usage
+- Register a new account
+- Login and go to "SMTP Settings" to configure your email server
+- Go to "Send Email", fill in the form, and hit Send
+- View sent emails in your dashboard
+
+---
+
+## License
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+---
+
+## Author
+### Roshan Kumar Sharma | Software Developer. 
+You can reach out via: -
+- Email: roshan.amlai96@gmail.com 
+- LinkedIn: https://www.linkedin.com/in/RoshanSharma7/
+- Twitter: https://www.twitter.com/imroshansharma7
+- Portfolio: https://roshansharma7.github.io/Roshan.github.io/
+
+---
+
+#### If you found this helpful, please follow me on all platforms.
