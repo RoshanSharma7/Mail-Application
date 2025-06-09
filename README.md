@@ -37,6 +37,8 @@ cd mailapp
 2. **Create virtual environment**
 ```
 python3 -m venv venv
+
+# Activate virtual environment
 source venv/bin/activate    # linux/Mac
 venv/Script/Activate        # Windows
 ```
