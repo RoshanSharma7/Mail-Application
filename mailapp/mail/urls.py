@@ -8,4 +8,5 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('smtp-settings/', views.smtp_settings_view, name='smtp_settings'),
     path('send-mail/', views.send_mail_view, name='send_mail'),
+    path('delete_mail/<int:mail_id>/', views.delete_mail, name='delete_mail'),
 ]

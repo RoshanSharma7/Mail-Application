@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import RegisterForm, SMTPForm, EmailForm
@@ -10,6 +10,7 @@ from email.header import Header
 import unicodedata
 import quopri
 from email.utils import formataddr
+from django.contrib import messages
 # from django.utils import strip_tags 
 
 def register_view(request):
@@ -114,3 +115,12 @@ def send_mail_view(request):
         form = EmailForm()
 
     return render(request, 'send_mail.html', {'form': form, 'error': error})
+
+def delete_mail(request, mail_id):
+    try:
+        email = SentEmail.objects.get(id=mail_id, user=request.user)
+        email.delete()
+        messages.success(request, "Email deleted successfully.")
+    except SentEmail.DoesNotExist:
+        messages.error(request, "Email not found or access denied.")
+    return redirect('dashboard')
