@@ -1,7 +1,78 @@
-<h2>Send Email</h2>
+<!-- <h2>Send Email</h2>
 {% if error %}<p style="color:red;">{{ error }}</p>{% endif %}
 <form method="post">{% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Send</button>
 </form>
-<a href="{% url 'dashboard' %}">Back</a>
+<a href="{% url 'dashboard' %}">Back</a> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Send Email</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f1f3f4;
+      padding: 2rem;
+      font-family: "Segoe UI", sans-serif;
+    }
+    .mail-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .mail-container h2 {
+      font-weight: 500;
+    }
+    .form-control {
+      border-radius: 8px;
+    }
+    .btn-send {
+      background-color: #1a73e8;
+      color: white;
+      font-weight: 500;
+    }
+    .btn-send:hover {
+      background-color: #0c5ed7;
+    }
+    .back-link {
+      display: block;
+      margin-top: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="mail-container">
+    <h2 class="mb-4">Compose Email</h2>
+
+    {% if error %}
+      <div class="alert alert-danger">{{ error }}</div>
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        {{ form.to_email.label_tag }}
+        {{ form.to_email }}
+      </div>
+      <div class="mb-3">
+        {{ form.subject.label_tag }}
+        {{ form.subject }}
+      </div>
+      <div class="mb-3">
+        {{ form.message.label_tag }}
+        {{ form.message }}
+      </div>
+      <button type="submit" class="btn btn-send">Send</button>
+    </form>
+
+    <a class="back-link" href="{% url 'dashboard' %}">← Back to Dashboard</a>
+  </div>
+</body>
+</html>

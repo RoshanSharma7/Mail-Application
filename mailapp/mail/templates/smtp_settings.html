@@ -1,6 +1,82 @@
-<h2>SMTP Settings</h2>
+<!-- <h2>SMTP Settings</h2>
 <form method="post">{% csrf_token %}
   {{ form.as_p }}
   <button type="submit">Save</button>
 </form>
-<a href="{% url 'dashboard' %}">Back</a>
+<a href="{% url 'dashboard' %}">Back</a> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SMTP Settings</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f1f3f4;
+      padding: 2rem;
+      font-family: "Segoe UI", sans-serif;
+    }
+    .smtp-container {
+      max-width: 600px;
+      margin: auto;
+      background-color: #fff;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    }
+    .smtp-container h2 {
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+    .form-control {
+      border-radius: 8px;
+    }
+    .btn-save {
+      background-color: #1a73e8;
+      color: white;
+      font-weight: 500;
+    }
+    .btn-save:hover {
+      background-color: #0c5ed7;
+    }
+    .back-link {
+      display: block;
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #5f6368;
+    }
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="smtp-container">
+    <h2>SMTP Settings</h2>
+
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        {{ form.smtp_server.label_tag }}
+        {{ form.smtp_server }}
+      </div>
+      <div class="mb-3">
+        {{ form.smtp_port.label_tag }}
+        {{ form.smtp_port }}
+      </div>
+      <div class="mb-3">
+        {{ form.email_host_user.label_tag }}
+        {{ form.email_host_user }}
+      </div>
+      <div class="mb-3">
+        {{ form.email_host_password.label_tag }}
+        {{ form.email_host_password }}
+      </div>
+      <button type="submit" class="btn btn-save">Save Settings</button>
+    </form>
+
+    <a href="{% url 'dashboard' %}" class="back-link">← Back to Dashboard</a>
+  </div>
+</body>
+</html>

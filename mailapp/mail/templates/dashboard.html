@@ -1,10 +1,14 @@
-<h3>Dashboard</h3><br>
-<a href="{% url 'send_mail' %}">Send Mail</a> |
-<a href="{% url 'smtp_settings' %}">SMTP Settings</a> |
-<a href="{% url 'logout' %}">Logout</a>
+<!-- <h3>Dashboard</h3><br> -->
+ <br>
+
+<div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">&nbsp; &nbsp; &nbsp; &nbsp;
+    <a href="{% url 'send_mail' %}" style="margin-right: 16px;">Send Mail</a> 
+    <a href="{% url 'smtp_settings' %}" style="margin-right: 16px;">SMTP Settings</a> 
+    <a href="{% url 'logout' %}" style="margin-left: auto;">Logout </a>&nbsp; &nbsp; &nbsp; &nbsp;
+</div>
 <hr>
 
-<h3>Sent Mails</h3>
+<h5>&nbsp; &nbsp; &nbsp; &nbsp;Sent Mails</h5>
 
 
 <!-- Bootstrap 5 Accordion for collapsible mail cards -->

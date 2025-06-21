@@ -1,14 +1,110 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-<head><title>Register</title></head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - Django Mail Application</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .register-container {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      max-width: 400px;
+      width: 100%;
+    }
+    .project-title {
+      text-align: center;
+      font-size: 18px;
+      color: #5f6368;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    h2 {
+      text-align: center;
+      color: #202124;
+      margin-bottom: 24px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    input {
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #dadce0;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+    button {
+      background-color: #1a73e8;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 4px;
+      margin-top: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #1669c1;
+    }
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+    .login-link a {
+      color: #1a73e8;
+      text-decoration: none;
+    }
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+    .errorlist {
+      color: red;
+      font-size: 14px;
+      list-style: none;
+      padding: 0;
+      margin: 0 0 10px 0;
+    }
+  </style>
+</head>
 <body>
-    <h2>Register</h2>
+  <div class="register-container">
+    <div class="project-title">Django Mail Application</div>
+    <h2>Create your account</h2>
+
     <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Register</button>
+      {% csrf_token %}
+
+      <!-- Username Field -->
+      {{ form.username.errors }}
+      <input type="text" name="username" placeholder="Username" value="{{ form.username.value|default_if_none:'' }}">
+
+      <!-- Email Field -->
+      {{ form.email.errors }}
+      <input type="email" name="email" placeholder="Email" value="{{ form.email.value|default_if_none:'' }}">
+
+      <!-- Password Field -->
+      {{ form.password.errors }}
+      <input type="password" name="password" placeholder="Password">
+
+      <button type="submit">Register</button>
     </form>
-    <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+
+    <div class="login-link">
+      Already have an account? <a href="{% url 'login' %}">Login</a>
+    </div>
+  </div>
 </body>
 </html>

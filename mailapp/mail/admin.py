@@ -1,3 +1,6 @@
 from django.contrib import admin
+from .models import MailUser
 
-# Register your models here.
+@admin.register(MailUser)
+class MailUserAdmin(admin.ModelAdmin):
+    list_display = ['user', 'department', 'created_at']
