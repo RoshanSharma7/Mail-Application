@@ -112,7 +112,7 @@ If you're interested in collaborating with the developer on future Django projec
 
 ## License:
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](https://github.com/RoshanSharma7/Mail-Application/License.md).
 
 ---
 
